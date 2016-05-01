@@ -10,8 +10,8 @@
         Hello from Facelets
         
         <h:form>
-            <p:inputText />
-            <p:commandButton value="Registrar" />
+            <p:inputText value="#{categoriaController.categoria.nombre}" />
+            <p:commandButton value="Registrar" actionListener="#{categoriaController.registrar()}" />
         </h:form>
     </h:body>
 </html>

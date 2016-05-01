@@ -6,28 +6,30 @@
 package com.wordpress.model;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author CarlEdwin
  */
 @Entity
-public class Categoria implements Serializable{
-    
+@Table(name="telefono")
+public class Telefono implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     
-    @Column(name="nombre")
-    private String nombre;
-    
-    @Column(name="estado")
-    private boolean estado = true;
+    @ManyToOne
+    @JoinColumn(name="codigo_persona", nullable = false)
+    private Persona persona;
+    private String numero;
 
     /**
      * @return the codigo
@@ -44,33 +46,32 @@ public class Categoria implements Serializable{
     }
 
     /**
-     * @return the nombre
+     * @return the persona
      */
-    public String getNombre() {
-        return nombre;
+    public Persona getPersona() {
+        return persona;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param persona the persona to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     /**
-     * @return the estado
+     * @return the numero
      */
-    public boolean isEstado() {
-        return estado;
+    public String getNumero() {
+        return numero;
     }
 
     /**
-     * @param estado the estado to set
+     * @param numero the numero to set
      */
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
-    
     
     
 }
