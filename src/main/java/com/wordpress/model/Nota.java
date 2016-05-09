@@ -5,6 +5,7 @@
  */
 package com.wordpress.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ import javax.persistence.TemporalType;
  * @author CarlEdwin
  */
 @Entity
-public class Nota {
+public class Nota implements Serializable{
     
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

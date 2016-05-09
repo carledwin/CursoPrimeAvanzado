@@ -12,6 +12,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.FacesComponent;
+import javax.faces.context.FacesContext;
 /**
  *
  * @author CarlEdwin
@@ -28,14 +31,17 @@ public class CategoriaController implements Serializable{
     
     @PostConstruct
     public void init(){
-        setCategoria(new Categoria());
+        categoria = new Categoria();
     }
     
     public void registrar(){
         try {
             categoriaEJB.create(getCategoria());
+            categoria = new Categoria();
+            FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, null, "Categoria cadastrada com sucesso!"));
         } catch (Exception e) {
             //mensaje prime growl
+            FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, null, "Erro ao tentar cadastrar Categoria.   >>>" + e.getMessage() + e.getCause()));
         }
     }
 
