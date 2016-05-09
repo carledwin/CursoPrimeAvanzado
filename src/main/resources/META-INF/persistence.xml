@@ -8,7 +8,6 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>jdbc/prime</jta-data-source>
 	
-		<class>br.com.model.Despesa</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		
 		 
